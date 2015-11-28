@@ -17,7 +17,9 @@
 import os
 import webapp2
 import jinja2
-import hashlib
+import hmac
+
+SECRET = 'imsosecret'
 
 from google.appengine.ext import db
 
@@ -27,7 +29,7 @@ jinja_env = jinja2.Environment(loader = jinja2.FileSystemLoader(template_dir),
 
 cookie_separator = '|'
 def hash_str(s):
-    return hashlib.md5(s).hexdigest()
+    return hmac.new(SECRET, s).hexdigest()
 
 def make_secure_val(s):
     return "%s%s%s" % (s,cookie_separator, hash_str(s))
@@ -71,7 +73,7 @@ class MainHandler(Handler):
         if visits > 10000:
             self.write('You are the best ever!')
         else:
-            self.write("You've been here %s times" % str(visits))
+            self.write("You've been here %s times" % visits)
 
 
 app = webapp2.WSGIApplication([
