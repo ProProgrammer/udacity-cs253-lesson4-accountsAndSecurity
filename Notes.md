@@ -17,3 +17,13 @@
 3. It looks something like this:
 `hmac(<a secret>, <key>, <hashing function>) --> [HASH]`
 
+---
+
+#### Password Hashing
+*_Lets talk about using passwords for hashing_*
+
+1. Say we have a table for users in our database, with a couple of columns, one for the user's name and another for the user's password.
+2. Now, we might have a function that accepts username and password and verifies if the details are correct
+3. The problem with this approach however, is that if this database gets compromised, you are in trouble. You give away all your users passwords.
+4. Hence insteads of storing plain text passwords in our database, we will store a passsword hash.
+ 
