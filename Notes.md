@@ -46,3 +46,11 @@ This hash (h) = hash of the password + salt.
 `h = H(passwrd + salt)`
 3. This salt looks very similar to the use of secret as we did in case of cookie hashing, however this salt is just some random characters and it is stored in the hash field.
  
+#### Bcrypt (This is not built into Python)
+
+1. Generally you can work with SHA256, they work ok.
+2. The problem with most hashing functions is that they are designed to work fast. So generally, this is a good thing.
+3. However, in cases like passwords, when its much more likely that somebody is gonna try to brute force you, it would be really cool if we had a hashing function that is both, really good but also kind of slow.
+4. One such function is called bcrypt.
+5. Bcrypt takes an extra parameter which basically says, how long do you want it to take.
+6. Hence we can explicitly ask this function to stay slow no matter how speedy the computers get overtime.
