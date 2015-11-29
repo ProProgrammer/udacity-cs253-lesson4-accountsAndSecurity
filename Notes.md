@@ -36,4 +36,13 @@
 4. That would be like an attacker gaining access to a database of SHA256 of passwords.
 5. This table exists, and its called a *RAINBOW TABLE*. You can google for it.
 6. A simple way to get around this would be add in some secret just as we did in case of cookie hashing, however we should not enter the same secret over and over.
-7. Hence we use something called a SALT.
+7. Hence we use something called a *SALT*.
+
+#### Salt
+
+1. Now in our user table, we are storing the username and we are storing the hash of the password. But instead of storing just the hash, we are going to add a secret to it.
+2. But this time it is not really a secret, instead we are going to say:
+This hash (h) = hash of the password + salt.
+`h = H(passwrd + salt)`
+3. This salt looks very similar to the use of secret as we did in case of cookie hashing, however this salt is just some random characters and it is stored in the hash field.
+ 
