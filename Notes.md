@@ -27,6 +27,7 @@
 3. The problem with this approach however, is that if this database gets compromised, you are in trouble. You give away all your users passwords.
 4. Hence insteads of storing plain text passwords in our database, we will store a passsword hash.
 
+---
 
 #### Rainbow Table
 
@@ -38,6 +39,8 @@
 6. A simple way to get around this would be add in some secret just as we did in case of cookie hashing, however we should not enter the same secret over and over.
 7. Hence we use something called a *SALT*.
 
+---
+
 #### Salt
 
 1. Now in our user table, we are storing the username and we are storing the hash of the password. But instead of storing just the hash, we are going to add a secret to it.
@@ -45,7 +48,9 @@
 This hash (h) = hash of the password + salt.
 `h = H(passwrd + salt)`
 3. This salt looks very similar to the use of secret as we did in case of cookie hashing, however this salt is just some random characters and it is stored in the hash field.
- 
+
+---
+
 #### Bcrypt (This is not built into Python)
 
 1. Generally you can work with SHA256, they work ok.
@@ -55,9 +60,13 @@ This hash (h) = hash of the password + salt.
 5. Bcrypt takes an extra parameter which basically says, how long do you want it to take.
 6. Hence we can explicitly ask this function to stay slow no matter how speedy the computers get overtime.
 
+---
+
 #### HTTPS
 
 1. We know how to store a password securely on the server.
 2. However, we still have a issue that if you type in a password, the password is actually sent in plain text over the internet.
 3. So if you really really care about the passwords being encrypted the whole way, so that some bad guy in the middle can't just sniff the password, you use HTTPS
 4. HTTPS is just like HTTP except that its encrypted over SSL.
+
+---
