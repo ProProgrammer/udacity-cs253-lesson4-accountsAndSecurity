@@ -17,7 +17,24 @@ def make_salt():
 # HASH(name + pw + salt),salt
 # use sha256
 
+hashed_password_with_salt = ''
+
 def make_pw_hash(name, pw):
     ###Your code here
     salt = make_salt()
-    return '%s%s%s' % (hashlib.sha256(name + pw + salt).hexdigest(), ',', salt)
+    hash_calculated = hashlib.sha256(name + pw + salt).hexdigest()
+    hashed_password_with_salt = (hash_calculated + ',' + salt)
+    return hashed_password_with_salt
+
+def valid_pw(name, pw, h):
+    ###Your code here
+    salt_component = h.split(',')[1]
+    password_component = h.split(',')[0]
+    if hashlib.sha256(name + pw + salt_component).hexdigest() == password_component:
+        return True
+    else:
+        return False
+
+h = make_pw_hash('spez', 'hunter2')
+print valid_pw('spez', 'hunter2', h)
+
