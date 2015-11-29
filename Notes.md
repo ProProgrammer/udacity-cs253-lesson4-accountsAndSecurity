@@ -26,4 +26,14 @@
 2. Now, we might have a function that accepts username and password and verifies if the details are correct
 3. The problem with this approach however, is that if this database gets compromised, you are in trouble. You give away all your users passwords.
 4. Hence insteads of storing plain text passwords in our database, we will store a passsword hash.
- 
+
+
+#### Rainbow Table
+
+1. Although passwords are hashed, we aren't completely safe yet. The problem is, there are a handful of good hashing algorithms that people would use for this sort of thing. Say for eg: we are using SHA256.
+2. Now if somebody would go through and create a mapping of every word to the hash of that word, that would be a problem. Because, the whole strength of this hashing problem is that its really hard to get from the HASH to the plain text that led to that hash
+3. So if you have already computed hash for all the words, and all you have to do is, create an inverse table. Once somebody has this table of all of these words computed, they are done!
+4. That would be like an attacker gaining access to a database of SHA256 of passwords.
+5. This table exists, and its called a *RAINBOW TABLE*. You can google for it.
+6. A simple way to get around this would be add in some secret just as we did in case of cookie hashing, however we should not enter the same secret over and over.
+7. Hence we use something called a SALT.
