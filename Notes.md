@@ -54,3 +54,10 @@ This hash (h) = hash of the password + salt.
 4. One such function is called bcrypt.
 5. Bcrypt takes an extra parameter which basically says, how long do you want it to take.
 6. Hence we can explicitly ask this function to stay slow no matter how speedy the computers get overtime.
+
+#### HTTPS
+
+1. We know how to store a password securely on the server.
+2. However, we still have a issue that if you type in a password, the password is actually sent in plain text over the internet.
+3. So if you really really care about the passwords being encrypted the whole way, so that some bad guy in the middle can't just sniff the password, you use HTTPS
+4. HTTPS is just like HTTP except that its encrypted over SSL.
